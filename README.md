@@ -20,35 +20,35 @@
 
 ### 首页与产品链路
 
-![首页与产品链路](assets/screenshots/01-home.png)
+<img src="./assets/screenshots/01-home.png?raw=true" alt="首页与产品链路" width="900" />
 
 ### 智能起名输入区
 
-![智能起名输入区](assets/screenshots/02-name-form.png)
+<img src="./assets/screenshots/02-name-form.png?raw=true" alt="智能起名输入区" width="900" />
 
 ### 智能起名结果概览
 
-![智能起名结果概览](assets/screenshots/03-name-report-overview.png)
+<img src="./assets/screenshots/03-name-report-overview.png?raw=true" alt="智能起名结果概览" width="900" />
 
 ### 智能起名候选名详情
 
-![智能起名候选名详情](assets/screenshots/08-name-report-detail.png)
+<img src="./assets/screenshots/08-name-report-detail.png?raw=true" alt="智能起名候选名详情" width="900" />
 
 ### 姓名诊断输入区
 
-![姓名诊断输入区](assets/screenshots/04-diagnose-form.png)
+<img src="./assets/screenshots/04-diagnose-form.png?raw=true" alt="姓名诊断输入区" width="900" />
 
 ### 姓名诊断结果概览
 
-![姓名诊断结果概览](assets/screenshots/05-diagnose-report-overview.png)
+<img src="./assets/screenshots/05-diagnose-report-overview.png?raw=true" alt="姓名诊断结果概览" width="900" />
 
 ### 姓名诊断评分维度
 
-![姓名诊断评分维度](assets/screenshots/06-diagnose-scorecards.png)
+<img src="./assets/screenshots/06-diagnose-scorecards.png?raw=true" alt="姓名诊断评分维度" width="900" />
 
 ### 姓名诊断优化建议
 
-![姓名诊断优化建议](assets/screenshots/07-diagnose-suggestions.png)
+<img src="./assets/screenshots/07-diagnose-suggestions.png?raw=true" alt="姓名诊断优化建议" width="900" />
 
 ## 核心功能
 
