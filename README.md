@@ -20,35 +20,35 @@
 
 ### 首页与产品链路
 
-<img src="./assets/screenshots/01-home.png?raw=true" alt="首页与产品链路" width="900" />
+<img src="https://raw.githubusercontent.com/LiuYutongAmy/xuanjian-ai-name-generator/main/assets/screenshots/01-home.png" alt="首页与产品链路" width="900" />
 
 ### 智能起名输入区
 
-<img src="./assets/screenshots/02-name-form.png?raw=true" alt="智能起名输入区" width="900" />
+<img src="https://raw.githubusercontent.com/LiuYutongAmy/xuanjian-ai-name-generator/main/assets/screenshots/02-name-form.png" alt="智能起名输入区" width="900" />
 
 ### 智能起名结果概览
 
-<img src="./assets/screenshots/03-name-report-overview.png?raw=true" alt="智能起名结果概览" width="900" />
+<img src="https://raw.githubusercontent.com/LiuYutongAmy/xuanjian-ai-name-generator/main/assets/screenshots/03-name-report-overview.png" alt="智能起名结果概览" width="900" />
 
 ### 智能起名候选名详情
 
-<img src="./assets/screenshots/08-name-report-detail.png?raw=true" alt="智能起名候选名详情" width="900" />
+<img src="https://raw.githubusercontent.com/LiuYutongAmy/xuanjian-ai-name-generator/main/assets/screenshots/08-name-report-detail.png" alt="智能起名候选名详情" width="900" />
 
 ### 姓名诊断输入区
 
-<img src="./assets/screenshots/04-diagnose-form.png?raw=true" alt="姓名诊断输入区" width="900" />
+<img src="https://raw.githubusercontent.com/LiuYutongAmy/xuanjian-ai-name-generator/main/assets/screenshots/04-diagnose-form.png" alt="姓名诊断输入区" width="900" />
 
 ### 姓名诊断结果概览
 
-<img src="./assets/screenshots/05-diagnose-report-overview.png?raw=true" alt="姓名诊断结果概览" width="900" />
+<img src="https://raw.githubusercontent.com/LiuYutongAmy/xuanjian-ai-name-generator/main/assets/screenshots/05-diagnose-report-overview.png" alt="姓名诊断结果概览" width="900" />
 
 ### 姓名诊断评分维度
 
-<img src="./assets/screenshots/06-diagnose-scorecards.png?raw=true" alt="姓名诊断评分维度" width="900" />
+<img src="https://raw.githubusercontent.com/LiuYutongAmy/xuanjian-ai-name-generator/main/assets/screenshots/06-diagnose-scorecards.png" alt="姓名诊断评分维度" width="900" />
 
 ### 姓名诊断优化建议
 
-<img src="./assets/screenshots/07-diagnose-suggestions.png?raw=true" alt="姓名诊断优化建议" width="900" />
+<img src="https://raw.githubusercontent.com/LiuYutongAmy/xuanjian-ai-name-generator/main/assets/screenshots/07-diagnose-suggestions.png" alt="姓名诊断优化建议" width="900" />
 
 ## 核心功能
 
