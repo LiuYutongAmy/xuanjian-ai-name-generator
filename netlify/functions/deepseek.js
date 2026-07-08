@@ -138,10 +138,10 @@ function buildNameMessages(payload, baziProfile) {
     {
       role: "user",
       content: [
-        "请输出 json。根据以下用户输入和 baziProfile，生成 4 个高质量中文候选名和深度起名报告。",
-        "候选名数量固定为 4 个。每个名字解释要丰富但不要啰嗦，重点体现为什么符合八字、五行、喜用倾向、寓意和典故。",
-        "每个候选名的 overallMeaning 至少 70 字，selfIntro 80-120 字，且风格互不重复。",
-        "若用户要求单字名优先，可给 1-2 个单字名；否则默认双字名为主。",
+        "请输出 json。根据以下用户输入和 baziProfile，生成 2 个高质量中文候选名和深度起名报告。",
+        "候选名数量固定为 2 个。每个名字解释要丰富但不要啰嗦，重点体现为什么符合八字、五行、喜用倾向、寓意和典故。",
+        "每个候选名的 overallMeaning 至少 70 字，selfIntro 60-90 字，且风格互不重复。",
+        "若用户要求单字名优先，可给 1 个单字名；否则默认双字名为主。",
         `用户输入：${JSON.stringify(payload, null, 2)}`,
         `baziProfile：${JSON.stringify(baziProfile, null, 2)}`,
         `请严格返回类似以下结构的 JSON，不要省略字段：${JSON.stringify(NAME_EXAMPLE, null, 2)}`
@@ -204,7 +204,7 @@ exports.handler = async (event) => {
 
   const messages = mode === "diagnose" ? buildDiagnoseMessages(payload, baziProfile) : buildNameMessages(payload, baziProfile);
   const temperature = mode === "diagnose" ? 0.48 : 0.62;
-  const maxTokens = Number(process.env.DEEPSEEK_MAX_TOKENS || (mode === "diagnose" ? 4200 : 4600));
+  const maxTokens = Number(process.env.DEEPSEEK_MAX_TOKENS || (mode === "diagnose" ? 4200 : 3600));
   const model = process.env.DEEPSEEK_MODEL || "deepseek-v4-flash";
 
   try {
