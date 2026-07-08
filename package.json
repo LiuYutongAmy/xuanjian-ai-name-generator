@@ -1,0 +1,14 @@
+{
+  "name": "xuanjian-ai-name-generator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "玄鉴：程序排盘 + DeepSeek AI 起名与姓名诊断网站",
+  "scripts": {
+    "start": "netlify dev",
+    "check": "node --check netlify/functions/deepseek.js && node --check netlify/functions/bazi-utils.js"
+  },
+  "dependencies": {
+    "lunar-javascript": "^1.7.7"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>玄鉴 · AI 八字起名与姓名诊断</title>
+  <meta name="description" content="玄鉴 AI 起名器：先由程序排出四柱八字、干支、五行、纳音与十神，再由 DeepSeek 生成姓名推荐、姓名诊断、寓意典故与专属自我介绍。" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta property="og:title" content="玄鉴 · AI 八字起名与姓名诊断" />
+  <meta property="og:description" content="程序排盘 + AI 深度解释的中文起名工具。" />
+  <link rel="preload" as="image" href="./assets/images/name-bg.jpg" />
+  <link rel="preload" as="image" href="./assets/images/diagnose-bg.jpg" />
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+  <script src="./assets/js/app.js" defer></script>
+</head>
+<body class="mode-name">
+  <div class="bg-layer bg-name" aria-hidden="true"></div>
+  <div class="bg-layer bg-diagnose" aria-hidden="true"></div>
+  <div class="bg-scrim" aria-hidden="true"></div>
+  <div class="simple-noise" aria-hidden="true"></div>
+  <div class="spotlight" aria-hidden="true"></div>
+
+  <header class="top-nav">
+    <a class="brand" href="#top" aria-label="玄鉴首页">
+      <span class="brand-mark">玄</span>
+      <span class="brand-copy">
+        <strong>玄鉴</strong>
+        <small>AI Naming Studio</small>
+      </span>
+    </a>
+
+    <nav class="mode-switch" aria-label="功能切换">
+      <button class="mode-tab is-active" type="button" data-mode="name" aria-controls="namePanel" aria-selected="true">
+        <span class="tab-icon">✦</span> 智能起名
+      </button>
+      <button class="mode-tab" type="button" data-mode="diagnose" aria-controls="diagnosePanel" aria-selected="false">
+        <span class="tab-icon">⌕</span> 姓名诊断
+      </button>
+    </nav>
+
+    <div class="nav-pill" title="Netlify Function 安全调用 DeepSeek，不在前端暴露密钥">
+      <span class="live-dot"></span>
+      Bazi + DeepSeek
+    </div>
+  </header>
+
+  <main id="top" class="page-shell">
+    <section class="hero-grid" aria-labelledby="heroTitle">
+      <div class="hero-copy reveal">
+        <div class="eyebrow">程序排盘 · AI 解释 · 中文姓名</div>
+        <h1 id="heroTitle">把八字、五行、音形义和典故放进同一条起名链路</h1>
+        <p class="hero-desc">玄鉴先在后端完成四柱、干支、纳音、五行与十神计算，再将结构化排盘交给 DeepSeek 生成姓名推荐或姓名诊断。页面保留完整推导、候选名对比、诗词典故、风险提示与每个名字的专属自我介绍。</p>
+        <div class="hero-chips" aria-label="能力标签">
+          <span>后端排盘</span>
+          <span>喜用倾向推导</span>
+          <span>诗词典故核验规则</span>
+          <span>移动端适配</span>
+        </div>
+      </div>
+
+      <aside class="flow-card reveal" aria-label="产品链路">
+        <div class="flow-head">
+          <span class="flow-kicker">FLOW</span>
+          <strong>从出生信息到姓名报告</strong>
+        </div>
+        <ol class="flow-list">
+          <li><span>1</span><div><strong>结构化输入</strong><p>姓氏、姓名、出生日期、时间、历法、出生地、偏好与避用字。</p></div></li>
+          <li><span>2</span><div><strong>程序排盘</strong><p>Netlify Function 调用历法库计算四柱、干支、纳音、五行与十神。</p></div></li>
+          <li><span>3</span><div><strong>AI 深度解释</strong><p>DeepSeek 基于固定排盘推导喜用倾向和命名补益策略。</p></div></li>
+          <li><span>4</span><div><strong>结果决策</strong><p>展示候选名、评分、典故、自我介绍、风险与替代方案。</p></div></li>
+        </ol>
+      </aside>
+    </section>
+
+    <section class="workspace reveal" aria-label="起名与诊断工具">
+      <div class="workspace-header">
+        <div>
+          <span class="section-label">WORKSPACE</span>
+          <h2 id="workspaceTitle">智能起名</h2>
+        </div>
+        <p id="workspaceHint">适合从 0 到 1 生成 4 个深度候选名，并获得完整解释。</p>
+      </div>
+
+      <section id="namePanel" class="tool-panel is-current" aria-labelledby="workspaceTitle">
+        <div class="form-grid form-grid-primary">
+          <label class="field field-short">
+            <span>姓氏</span>
+            <input id="surname" type="text" value="刘" maxlength="4" autocomplete="off" placeholder="如：刘" />
+          </label>
+
+          <div class="field field-short">
+            <span>性别</span>
+            <div class="segmented" id="genderGroup" role="group" aria-label="选择性别">
+              <button class="seg-btn is-active" type="button" data-value="男">男孩</button>
+              <button class="seg-btn" type="button" data-value="女">女孩</button>
+              <button class="seg-btn" type="button" data-value="未指定">不限</button>
+            </div>
+          </div>
+
+          <label class="field">
+            <span>起名风格</span>
+            <select id="nameStyle">
+              <option value="清雅现代">清雅现代</option>
+              <option value="诗意温润">诗意温润</option>
+              <option value="大气稳重">大气稳重</option>
+              <option value="明亮灵动">明亮灵动</option>
+              <option value="书卷气">书卷气</option>
+              <option value="清冷高级">清冷高级</option>
+              <option value="国际化易读">国际化易读</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>名字字数</span>
+            <select id="nameLength">
+              <option value="双字名优先">双字名优先</option>
+              <option value="单字名优先">单字名优先</option>
+              <option value="单双字都可">单双字都可</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="form-grid date-grid">
+          <label class="field"><span>历法</span><select id="calendarType"><option value="solar">公历 / 阳历</option><option value="lunar">农历 / 阴历</option></select></label>
+          <label class="field"><span>出生年份</span><select id="year"></select></label>
+          <label class="field"><span>月份</span><select id="month"></select></label>
+          <label class="field"><span>日期</span><select id="day"></select></label>
+          <label class="field"><span>出生时间</span><input id="birthTime" type="time" value="08:30" /></label>
+          <label class="field check-field"><span>闰月</span><label class="inline-check"><input id="isLeapMonth" type="checkbox" /> 农历闰月</label></label>
+        </div>
+
+        <div class="form-grid optional-grid">
+          <label class="field">
+            <span>出生地</span>
+            <input id="birthPlace" type="text" maxlength="40" value="北京" placeholder="如：北京、成都、香港、新加坡" />
+          </label>
+          <label class="field">
+            <span>偏好意象</span>
+            <input id="preference" type="text" maxlength="80" placeholder="如：山水、星河、松竹、温柔但不俗" />
+          </label>
+          <label class="field">
+            <span>避用字 / 避用音</span>
+            <input id="avoidChars" type="text" maxlength="80" placeholder="如：梓、涵、xi、过于网红的字" />
+          </label>
+          <label class="field check-field">
+            <span>高级选项</span>
+            <label class="inline-check"><input id="useTrueSolar" type="checkbox" /> 按出生地经度校正真太阳时</label>
+          </label>
+        </div>
+
+        <div class="action-row">
+          <button class="primary-cta" id="generateBtn" type="button">
+            <span>生成深度姓名报告</span>
+            <span class="cta-orb">→</span>
+          </button>
+          <button class="ghost-cta" id="demoNameBtn" type="button">查看示例结果</button>
+          <p class="fine-print">四柱、五行、纳音、十神由后端历法库计算；喜用神属于传统命理解释，会给出推导依据，不作绝对命运承诺。</p>
+        </div>
+      </section>
+
+      <section id="diagnosePanel" class="tool-panel" hidden>
+        <div class="form-grid diagnose-grid">
+          <label class="field field-wide">
+            <span>需要诊断的全名</span>
+            <input id="diagnoseName" type="text" maxlength="8" autocomplete="off" placeholder="例如：刘雨彤" />
+          </label>
+
+          <div class="field field-short">
+            <span>性别</span>
+            <div class="segmented" id="diagGenderGroup" role="group" aria-label="诊断性别">
+              <button class="seg-btn is-active" type="button" data-value="男">男</button>
+              <button class="seg-btn" type="button" data-value="女">女</button>
+              <button class="seg-btn" type="button" data-value="未指定">不限</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-grid date-grid">
+          <label class="field"><span>历法</span><select id="diagCalendarType"><option value="solar">公历 / 阳历</option><option value="lunar">农历 / 阴历</option></select></label>
+          <label class="field"><span>出生年份</span><select id="diagYear"></select></label>
+          <label class="field"><span>月份</span><select id="diagMonth"></select></label>
+          <label class="field"><span>日期</span><select id="diagDay"></select></label>
+          <label class="field"><span>出生时间</span><input id="diagBirthTime" type="time" value="08:30" /></label>
+          <label class="field check-field"><span>闰月</span><label class="inline-check"><input id="diagIsLeapMonth" type="checkbox" /> 农历闰月</label></label>
+        </div>
+
+        <div class="form-grid optional-grid">
+          <label class="field">
+            <span>出生地</span>
+            <input id="diagBirthPlace" type="text" maxlength="40" value="北京" placeholder="如：北京、成都、香港、新加坡" />
+          </label>
+          <label class="field field-wide">
+            <span>你希望这个名字呈现的气质</span>
+            <input id="diagnoseGoal" type="text" maxlength="80" placeholder="如：清爽、有书卷气、不过分女性化、适合未来职场" />
+          </label>
+          <label class="field check-field">
+            <span>高级选项</span>
+            <label class="inline-check"><input id="diagUseTrueSolar" type="checkbox" /> 按出生地经度校正真太阳时</label>
+          </label>
+        </div>
+
+        <div class="action-row">
+          <button class="primary-cta" id="diagnoseBtn" type="button">
+            <span>诊断姓名与优化建议</span>
+            <span class="cta-orb">→</span>
+          </button>
+          <button class="ghost-cta" id="demoDiagBtn" type="button">查看示例结果</button>
+          <p class="fine-print">评分用于比较语言、文化、排盘适配与现代使用维度，不代表真实人生结果。</p>
+        </div>
+      </section>
+    </section>
+
+    <section id="resultsRegion" class="results-region" hidden aria-live="polite"></section>
+
+    <footer class="footer-note">
+      <strong>玄鉴</strong> · 名字是一个长期使用的个人界面。判断一个名字，应同时看排盘适配、读音、字形、语义、出处、社交场景与长期辨识度。
+    </footer>
+  </main>
+</body>
+</html>
